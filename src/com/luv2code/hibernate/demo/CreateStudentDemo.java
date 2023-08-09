@@ -1,5 +1,8 @@
 package com.luv2code.hibernate.demo;
 
+import java.text.ParseException;
+import java.util.Date;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -29,6 +32,14 @@ public class CreateStudentDemo {
 			//3. save the student object
 			System.out.println("Saving the student..");
 			session.save(tempStudent);
+			
+			try {
+				Date theDateOfBirth=DateUtils.parseDate("13/02/1998");
+				Student tempStudent2 = new Student("Nam","Nguyễn","namnguye@gmail.com",theDateOfBirth);
+				session.save(tempStudent2);
+			}catch(ParseException pe) {
+				
+			}
 			
 			
 			//4. commit transaction
